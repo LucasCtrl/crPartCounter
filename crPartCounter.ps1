@@ -48,7 +48,7 @@ foreach ($file in Get-ChildItem -LiteralPath $Path -Filter *.ptn -File) {
 
     $sum = $lines | Where-Object { $_ -like 'SUM1,*' } | Select-Object -First 1
     if (-not $sum) { Write-Warning "$($file.Name): no SUM1 line, skipped."; continue }
-    $qty = [int](($sum -split ',')[6])
+    $qty = [int](($sum -split ',')[5])
     Write-Verbose "$($file.Name) $($date.ToString('dd/MM/yyyy')) : $qty"
     $total += $qty
     $fileCount++
